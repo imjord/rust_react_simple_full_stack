@@ -5,8 +5,18 @@ import React, { useState, useEffect } from "react";
 function App() {
   const [data, setData] = useState({});
 
-  const getData = async () => {
+  const getHome = async () => {
     const response = await axios.get("http://localhost:8080/");
+    setData(response);
+  };
+
+  const getAbout = async () => {
+    const response = await axios.get("http://localhost:8080/about");
+    setData(response);
+  };
+
+  const getContact = async () => {
+    const response = await axios.get("http://localhost:8080/contact");
     setData(response);
   };
 
@@ -23,7 +33,9 @@ function App() {
           <p> {data.data} </p>
         )}
       </p>
-      <button onClick={() => getData()}>Get rust</button>
+      <button onClick={() => getHome()}>Home</button>
+      <button onClick={() => getAbout()}>About</button>
+      <button onClick={() => getContact()}>Contact</button>
     </div>
   );
 }

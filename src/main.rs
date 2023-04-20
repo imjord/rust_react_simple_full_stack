@@ -28,7 +28,7 @@ async fn main() -> std::io::Result<()> {
                     .allowed_header(http::header::CONTENT_TYPE)
                     .max_age(3600),
             )
-            .service(home).service(about)
+            .service(home).service(about).service(contact)
     })
     .bind(("127.0.0.1", 8080))?
     .run()
