@@ -7,13 +7,13 @@ async fn home() -> impl Responder {
 
 #[get("/about")]
 async fn about() -> impl Responder {
-    HttpResponse::Ok().json("About us from Rust!")
+    HttpResponse::Ok().json("About page from Rust!")
 }
 
 
 #[get("/contact")]
 async fn contact() -> impl Responder {
-    HttpResponse::Ok().json("Contact us from Rust!")
+    HttpResponse::Ok().json("Contact page from Rust!")
 }
 
 #[actix_web::main]

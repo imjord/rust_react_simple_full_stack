@@ -45,6 +45,17 @@ button:hover {
   cursor: pointer;
 }
 
+.error {
+  color: red;
+  font-size: 2rem;
+  font-weight: 600;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin: 10px;
+  width: 50%;
+  background-color: rgba(100, 32, 32, 0.986);
+}
+
 /* make a keyframe for the .page_text to blur in */
 @keyframes blurIn {
   0% {

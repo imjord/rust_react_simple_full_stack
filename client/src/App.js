@@ -5,23 +5,22 @@ import shortid from "shortid";
 import React, { useState, useEffect } from "react";
 function App() {
   const [data, setData] = useState({});
+  const [error, setError] = useState(null);
 
   const getRandomKey = () => {
     return shortid.generate();
   };
-  const getHome = async () => {
-    const response = await axios.get("http://localhost:8080/");
-    setData(response);
-  };
 
-  const getAbout = async () => {
-    const response = await axios.get("http://localhost:8080/about");
-    setData(response);
-  };
-
-  const getContact = async () => {
-    const response = await axios.get("http://localhost:8080/contact");
-    setData(response);
+  const getData = async (path) => {
+    try {
+      const response = await axios.get(`http://localhost:8080/${path}`);
+      setError(null);
+      setData(response);
+    } catch (error) {
+      setData({});
+      setError(error);
+      console.log(error.message);
+    }
   };
 
   return (
@@ -29,17 +28,18 @@ function App() {
       <div className="app_wrapper">
         <div className="page_text" key={getRandomKey()}>
           <p>
-            {Object.keys(data).length === 0 ? (
-              <p>Get data from rust</p>
-            ) : (
+            {error ? <p className="error"> {error.message} </p> : null}
+            {Object.keys(data).length > 0 ? (
               <p> {data.data} </p>
+            ) : (
+              <p>Get Data From Rust</p>
             )}
           </p>
         </div>
         <div className="button_nav">
-          <button onClick={() => getHome()}>Home</button>
-          <button onClick={() => getAbout()}>About</button>
-          <button onClick={() => getContact()}>Contact</button>
+          <button onClick={() => getData("")}>Home</button>
+          <button onClick={() => getData("about")}>About</button>
+          <button onClick={() => getData("contact")}>Contact</button>
         </div>
       </div>
     </div>
