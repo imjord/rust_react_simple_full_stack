@@ -2,18 +2,18 @@ use actix_web::{get, App, http,  HttpResponse, HttpServer, Responder};
 use actix_cors::Cors;
 #[get("/")]
 async fn home() -> impl Responder {
-    HttpResponse::Ok().json("Home page from rust!")
+    HttpResponse::Ok().json("Home page from Rust!")
 }
 
 #[get("/about")]
 async fn about() -> impl Responder {
-    HttpResponse::Ok().json("About us from rust!")
+    HttpResponse::Ok().json("About us from Rust!")
 }
 
 
 #[get("/contact")]
 async fn contact() -> impl Responder {
-    HttpResponse::Ok().json("Contact us from rust!")
+    HttpResponse::Ok().json("Contact us from Rust!")
 }
 
 #[actix_web::main]
