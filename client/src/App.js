@@ -1,7 +1,7 @@
 import "./App.css";
 import axios from "axios";
 import shortid from "shortid";
-
+import Footer from "./components/Footer";
 import React, { useState, useEffect } from "react";
 function App() {
   const [data, setData] = useState({});
@@ -42,6 +42,7 @@ function App() {
           <button onClick={() => getData("contact")}>Contact</button>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
