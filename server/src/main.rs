@@ -1,5 +1,7 @@
 use actix_web::{get, App, http,  HttpResponse, HttpServer, Responder};
 use actix_cors::Cors;
+
+
 #[get("/")]
 async fn home() -> impl Responder {
     HttpResponse::Ok().json("Home page from Rust!")
